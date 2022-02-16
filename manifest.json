@@ -1,0 +1,43 @@
+{
+  "name": "quants-fw",
+  "label": "Quantify ANTs Cortical Thickness ROI values",
+  "description": "Calculate summary values for ANTs pipelines",
+  "version": "0.1.0_0.1.0",
+  "author": "Jeffrey Duda",
+  "maintainer": "Jeffrey Duda <jeff.duda@gmail.com>",
+  "cite": "",
+  "license": "Apache-2.0",
+  "url": "",
+  "source": "",
+  "environment": {
+    "FLYWHEEL": "/flywheel/v0"
+  },
+  "custom": {
+    "gear-builder": {
+      "category": "analysis",
+      "image": "jtduda/itk-python:0.1.0"
+    },
+    "flywheel": {
+      "suite": "Flywheel Training Gears"
+    }
+  },
+  "inputs": {
+    "zip": {
+      "description": "output of antsct-aging-fw gear",
+      "base": "file",
+      "type": {
+        "enum": [
+          "zip"
+        ]
+      }
+    }
+  },
+  "config": {
+    "min_size": {
+      "description": "region with fewer values than min_size are ignored",
+      "default":50,
+      "type": "integer"
+    }
+  },
+  "command": "python3 run.py"
+}
