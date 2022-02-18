@@ -7,7 +7,6 @@ RUN apt-get update && apt-get install -y \
 
 RUN pip3 install numpy itk flywheel-sdk pandas
 
-
 ENV FLYWHEEL=/flywheel/v0
 RUN mkdir -p ${FLYWHEEL}
 
@@ -15,8 +14,8 @@ RUN mkdir -p ${FLYWHEEL}
 #COPY *.csv ${FLYWHEEL}/.
 
 RUN mkdir -p /apps/quants
+RUN git clone https://github.com/ftdc-picsl/QuANTs.git /apps/quants/ && cd /apps/quants && git pull && git checkout c83b5a0
+RUN pip3 install /apps/quants/python/quants
 
-# FIXME - change this to checkout a specific version/tag
-RUN git clone https://github.com/ftdc-picsl/QuANTs.git /apps/quants/ && cd /apps/quants && git pull
 
 ENTRYPOINT ["python3 run.py"]

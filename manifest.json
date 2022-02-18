@@ -32,12 +32,5 @@
       }
     }
   },
-  "config": {
-    "min_size": {
-      "description": "region with fewer values than min_size are ignored",
-      "default":50,
-      "type": "integer"
-    }
-  },
   "command": "python3 run.py"
 }
